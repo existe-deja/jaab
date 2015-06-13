@@ -35,12 +35,18 @@ class MainController{
           ';port='.F3::get('mysql_port').
           ';dbname='.F3::get('mysql_dbname'),
           F3::get('mysql_user'),
-          F3::get('mysql_pass')
+          F3::get('mysql_pass'),
+          array( \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION )
         );
 
         $inscriptions = new DB\SQL\Mapper($db,'inscriptions');
         $inscriptions->email=$email_form;
-        $inscriptions->save();
+        try{
+          $inscriptions->save();
+        }catch(\PDOException $e){
+          echo $e->errorInfo[1];
+          return false;
+        }
 
         return true;
       }else{
