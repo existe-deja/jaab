@@ -23,6 +23,10 @@ class MainController{
 
 
   function subscribe(){
+    $status = array(
+      'status' => false,
+      'msg' => ''
+    );
 
     if(F3::get('SESSION.csrf') == F3::get('POST.token')){
       $email_form = F3::get('POST.subscriber');
@@ -44,17 +48,24 @@ class MainController{
         try{
           $inscriptions->save();
         }catch(\PDOException $e){
-          echo $e->errorInfo[1];
-          return false;
+          $status['status'] = false;
+          $status['msg'] = $e->errorInfo[2];
+          echo json_encode($status);
+          exit();
         }
 
-        return true;
+        $status['status'] = true;
+        $status['msg'] = "YEAH ! ♥ sur toi";
       }else{
-        return false;
+        $status['status'] = false;
+        $status['msg'] = "Hum, email invalide :/";
       }
     }else{
-      return false;
-    }    
+      $status['status'] = false;
+      $status['msg'] = "Greetings from KGB ;)";
+    }
+
+    echo json_encode($status);
   }
 
 

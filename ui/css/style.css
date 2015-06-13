@@ -43,6 +43,7 @@ h2{
 }
 .plain{
   padding: 0 14%;
+  position: relative;
 }
 .plain p{
   font-weight: 300;
@@ -58,14 +59,27 @@ h2{
   margin: auto;
 }
 input[type='email']{
-  height: 50px;
-  line-height: 50px;
+  height: 45px;
+  line-height: 45px;
   border: none;
   padding: 4px 30px;
   width: 290px;
   font-weight: 600;
   font-size: 1.3em;
   color: #fff;
+  border-radius: 60px; 
+}
+.plain form.good input[type='email']{
+  background: #86c56c;
+}
+.plain form.good input[type='submit']{
+  background-position: 93px 448px;
+}
+.plain form.bad input[type='email']{
+  background: #fd7d7d ;
+}
+.plain form.bad input[type='submit']{
+  background-position: 150px 497px;
 }
 ::-webkit-input-placeholder{
   color: #fff;
@@ -85,12 +99,13 @@ input[type='submit']{
   border: none;
   width: 60px;
   height: 50px;
-  margin-left: -68px;
+  margin-left: -66px;
   background: url(../images/sprite-icons.png);
-  background-position: 150px 450px;
+  background-position: 150px 448px;
 }
 .features{
   padding-top: 80px;
+  padding-left: 50px;
 }
 .features li{
   padding-bottom: 40px;
@@ -167,14 +182,8 @@ input[type='submit']{
 .pure-menu-link[href="#beta-testeur"]{
   background: #ffcb64;
   position: relative;
-  padding: 11px 14px;
-}
-.pure-menu-link[href="#beta-testeur"]:before,
-.pure-menu-link[href="#beta-testeur"]:after{
-  content: " ";
-  background: red;
-  width: 20px;
-  height: 20px;
+  padding: 11px 16px;
+  border-radius: 20px; 
 }
 /* END MENU */
 /************/
@@ -184,6 +193,7 @@ input[type='submit']{
 /* SECTION 1 */
 .plain:nth-of-type(1){
   padding-top: 150px;
+  padding-bottom: 115px;
   color: #fff;
 }
 .plain:nth-of-type(1) h1{
@@ -194,6 +204,10 @@ input[type='submit']{
 }
 .plain:nth-of-type(1) input[type='email']{
   background: #ffcb64;
+}
+.plain:nth-of-type(1) .wrapper img{
+  position: absolute;
+  right: 14%;
 }
 /* END SECTION 1 */
 /*****************/
@@ -206,6 +220,10 @@ input[type='submit']{
 }
 .plain:nth-of-type(2) h1{
   color: #3381f6;
+}
+.plain:nth-of-type(2) .wrapper img{
+  position: absolute;
+  bottom: 0;
 }
 .plain:nth-of-type(2) .features li:nth-child(1) .list-icon{
   background: url(../images/sprite-icons.png);
@@ -290,9 +308,10 @@ input[type='submit']{
   color: #86c56c;
   height: 50px;
   line-height: 50px;
-  padding: 0 30px;
+  padding: 0 35px;
   background: #fff;
   text-transform: uppercase;
+  border-radius: 60px; 
 }
 .plain:nth-of-type(5) #little-player{
   display: inline-block;
