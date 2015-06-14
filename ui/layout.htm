@@ -25,16 +25,6 @@
     <?php echo $this->render(Base::instance()->get('content')); ?>
     <script type="text/javascript" src="ui/js/vendors/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="ui/js/main.js"></script>
-    <script>
-      $(document).ready(function() {
-        $('.scrollTo').click( function() { // Au clic sur un élément
-          var page = $(this).attr('href'); // Page cible
-          var speed = 750; // Durée de l'animation (en ms)
-          $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
-          return false;
-        });
-      });
-    </script>
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

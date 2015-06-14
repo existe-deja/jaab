@@ -163,15 +163,17 @@ input[type='submit']{
 .menu{
   position: fixed;
   width: 100%;
-  margin-top: 30px;
   z-index: 1;
 }
 .pure-menu-list{
   position: absolute;
   right: 100px;
 }
+.pure-menu-horizontal{
+  margin-top:30px;
+}
 .pure-menu-heading{
-  position: absolute;
+  position: fixed;
   left: 100px;
   padding: 0;
 }
@@ -200,6 +202,34 @@ input[type='submit']{
 }
 /* END MENU */
 /************/
+
+
+/*************/
+/*  MIDNIGHT JS  */
+.midnightHeader.default{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background: none;
+  color: black;
+  font-size: 2px;
+}
+.midnightHeader.white {
+  background: white;
+  color: white;
+  font-size: 100px;
+}
+.midnightHeader.blue {
+  background: red;
+  color: blue;
+  font-size: 0px;
+}
+
+#beBeta2{
+  background:red;
+}
+/*************/
+/* END MIDNIGHT JS */
 
 
 /*************/
