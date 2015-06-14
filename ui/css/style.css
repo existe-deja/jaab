@@ -486,9 +486,27 @@ footer .swag-si-tu-lis-ca li:last-child{
   .plain header p {
     width: auto;
   }
+  .plain:nth-of-type(1) p{
+    text-align:center;
+  }
+  .plain:nth-of-type(1) h1{
+    padding-top: 10px;
+  }
   .plain:nth-of-type(1) .wrapper img,
   .plain:nth-of-type(2) .wrapper img{
     position: initial;
+  }
+  .plain:nth-of-type(4) header {
+    padding-bottom: 100px;
+  }
+  .plain:nth-of-type(6) p {
+    text-align:center;
+  } 
+  footer .swag-si-tu-lis-ca {
+    display: none;
+  }
+  .plain header {
+    padding-bottom: 50px;
   }
   .email-wrapper{
     width: 80%;

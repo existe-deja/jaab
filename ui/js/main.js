@@ -34,13 +34,13 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-        $('.scrollTo').click( function() { // Au clic sur un élément
-          var page = $(this).attr('href'); // Page cible
-          var speed = 750; // Durée de l'animation (en ms)
-          $('html, body').animate( { scrollTop: $(page).offset().top+55 }, speed ); // Go
-          return false;
-        });
-      });
+    $('.scrollTo').click( function() { // Au clic sur un élément
+      var page = $(this).attr('href'); // Page cible
+      var speed = 750; // Durée de l'animation (en ms)
+      $('html, body').animate( { scrollTop: $(page).offset().top+55 }, speed ); // Go
+        return false;
+     });
+  });
 
 $(document).ready(function(){      
             $(window).resize(function() {
@@ -60,12 +60,14 @@ $(document).ready(function(){
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
                     document.getElementById("jaab-logo").src = "ui/images/logo.png";
                     $("#press").css('color', '#FFFFFF');
+                    window.location.hash = 'decouvrez-comment-jaab-fonctionne';
                 }
                 else if(scroll_pos > positionElementInPage3-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
                     document.getElementById("jaab-logo").src = "ui/images/logo2.png";
                     $("#press").css('color', '#3381f6');
+                    window.location.hash = 'rejoignez-les-evenements-de-vos-amis';
                 }
                 else if(scroll_pos > positionElementInPage2-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
@@ -73,18 +75,21 @@ $(document).ready(function(){
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
                     $("#press").css('color', '#FFFFFF');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
+                    window.location.hash = 'retrouvez-tous-vos-amis-simplement';
                 }
                  else if(scroll_pos > positionElementInPage1-80) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
                     document.getElementById("jaab-logo").src = "ui/images/logo2.png";
                     $("#press").css('color', '#3381f6');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
+                    window.location.hash = 'tous-vos-evenements-au-meme-endroit';
                 }
                  else {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#ffcb64');
                     document.getElementById("jaab-logo").src = "ui/images/logo.png";
                     $("#press").css('color', '#FFFFFF');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
+                    window.location.hash = '';
                 }
             });
         });
