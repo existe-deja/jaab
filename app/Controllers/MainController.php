@@ -14,8 +14,9 @@ class MainController{
 
   function home(){
     session_start();
-    $s = new Session();
-    F3::set('SESSION.csrf', $s->csrf());
+    // 403 on mobile...
+    // $s = new Session();
+    // F3::set('SESSION.csrf', $s->csrf());
     F3::set('content', 'home.htm');
 
     echo View::instance()->render('layout.htm');
@@ -49,7 +50,12 @@ class MainController{
           $inscriptions->save();
         }catch(\PDOException $e){
           $status['status'] = false;
-          $status['msg'] = $e->errorInfo[2];
+          if($e->errorInfo[1] == 1062){
+            $status['status'] = true;
+            $status['msg'] = 'Tu existes déjà ;)';
+          }else{
+            $status['msg'] = $e->errorInfo[1];
+          }
           echo json_encode($status);
           exit();
         }

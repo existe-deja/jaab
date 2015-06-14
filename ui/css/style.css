@@ -58,24 +58,29 @@ h2{
   width: 60%;
   margin: auto;
 }
-input[type='email']{
+.email-wrapper{
   height: 45px;
   line-height: 45px;
-  border: none;
   padding: 4px 30px;
   width: 290px;
-  font-weight: 600;
-  font-size: 1.3em;
-  color: #fff;
-  border-radius: 60px; 
+  border-radius: 60px;
+  position: relative;
 }
-.plain form.good input[type='email']{
+input[type='email']{
+  width: 290px;
+  border: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #fff;
+  background: transparent;
+}
+.plain form.good .email-wrapper{
   background: #86c56c;
 }
 .plain form.good input[type='submit']{
   background-position: 93px 448px;
 }
-.plain form.bad input[type='email']{
+.plain form.bad .email-wrapper{
   background: #fd7d7d ;
 }
 .plain form.bad input[type='submit']{
@@ -101,7 +106,10 @@ input[type='submit']{
   height: 50px;
   margin-left: -66px;
   background: url(../images/sprite-icons.png);
-  background-position: 150px 448px;
+  background-position: 151px 448px;
+  position: absolute;
+  top: 4px;
+  right: 3px;
 }
 .features{
   padding-top: 80px;
@@ -193,7 +201,7 @@ input[type='submit']{
 /* SECTION 1 */
 .plain:nth-of-type(1){
   padding-top: 150px;
-  padding-bottom: 115px;
+  padding-bottom: 165px;
   color: #fff;
 }
 .plain:nth-of-type(1) h1{
@@ -202,7 +210,7 @@ input[type='submit']{
 .plain:nth-of-type(1) p{
   padding-bottom: 30px;
 }
-.plain:nth-of-type(1) input[type='email']{
+.plain:nth-of-type(1) .email-wrapper{
   background: #ffcb64;
 }
 .plain:nth-of-type(1) .wrapper img{
@@ -251,9 +259,10 @@ input[type='submit']{
   padding-top: 100px;
   color: #fff;
 }
-.plain:nth-of-type(3) input[type='email']{
+.plain:nth-of-type(3) .email-wrapper{
   margin-top: 30px;
   background: #86c56c;
+  margin: 40px auto 0;
 }
 .plain:nth-of-type(3) .wrapper{
   position: relative;
@@ -324,6 +333,7 @@ input[type='submit']{
 }
 .over-stream{
   position: absolute;
+  right: 14%;
 }
 /* END OF SECTION 5 */
 /********************/
@@ -335,7 +345,10 @@ input[type='submit']{
   padding-top: 40px;
   padding-bottom: 80px;
 }
-.plain:nth-of-type(6) input[type='email']{
+.plain:nth-of-type(6) p{
+  font-size: 1.1em;
+}
+.plain:nth-of-type(6) .email-wrapper{
   margin-top: 40px;
   background: #3381f6;
 }
@@ -397,3 +410,86 @@ footer .swag-si-tu-lis-ca li + li{
 footer .swag-si-tu-lis-ca li:last-child{
   border: none;
 }
+/* END FOOTER */
+/**************/
+
+
+/* RESPONSIVE */
+/**************/
+@media screen and (max-width: 48em){
+  /***********/
+  /* GLOBALS */
+  h1{
+    font-size: 2.1em;
+  }
+  .plain{
+    padding: 0 5%;
+  }
+  .plain h1{
+    text-align: center;
+  }
+  .plain header p {
+    width: auto;
+  }
+  .plain:nth-of-type(1) .wrapper img,
+  .plain:nth-of-type(2) .wrapper img{
+    position: initial;
+  }
+  .email-wrapper{
+    width: 80%;
+    margin: auto;
+  }
+  /* END GLOBALS */
+  /***************/
+
+
+  /* MENU */
+  /********/
+  .pure-menu-list{
+    display: none !important;
+  }
+  /* END MENU */
+  /************/
+
+
+  /* SECTION 1 */
+  /*************/
+  .plain:nth-of-type(1){
+    padding-bottom: 0;
+    padding-top: 100px;
+  }
+  .plain:nth-of-type(1) form{
+    margin-bottom: 40px;
+  }
+  /* END SECTION 1 */
+  /*****************/
+
+
+  /* SECTION 2 */
+  /*************/
+  .plain:nth-of-type(2){
+    padding-bottom: 0;
+    padding-top: 50px;
+  }
+  .plain:nth-of-type(1) form{
+    margin-bottom: 40px;
+  }
+  /* END SECTION 1 */
+  /*****************/
+
+
+  /* SECTION 5 */
+  /*************/
+  .over-stream{
+    display: none;
+  }
+  .plain:nth-of-type(5) .wrapper a{
+    display: block;
+    width: 160px;
+    margin: 40px auto 0;
+  }
+  /* END SECTION 5 */
+  /*****************/
+}
+/* END RESPONSIVE */
+/******************/

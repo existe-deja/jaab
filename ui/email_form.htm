@@ -1,5 +1,7 @@
 <form class="subscribe-form" action="subscribe" method="POST">
-  <input type="email" name="subscriber" placeholder="Adresse email" value="lol@test.com">
   <input type="hidden" name="token" value="<?php echo(F3::get('SESSION.csrf')); ?>">
-  <input type="submit" value=" ">
+  <div class="email-wrapper">
+    <input type="email" name="subscriber" placeholder="Adresse email" value="">
+    <input type="submit" value=" ">
+  </div>
 </form>
