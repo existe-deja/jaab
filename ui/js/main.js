@@ -42,12 +42,13 @@ $(document).ready(function() {
      });
   });
 
-$(document).ready(function(){      
-            $(window).resize(function() {
-               setTimeout( function(){
-                   window.location.href = window.location.href;
-               },1000); 
-            });
+/*$(document).ready(function(){      
+     $(window).resize(function() {
+       setTimeout( function(){
+       window.location.href = window.location.href;
+     },1000); 
+});*/
+            
             var scroll_pos = 0;
             var positionElementInPage1 = $('#scroll1').offset().top;
             var positionElementInPage2 = $('#scroll2').offset().top;
@@ -58,20 +59,22 @@ $(document).ready(function(){
                 if(scroll_pos > positionElementInPage4-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
-                    document.getElementById("jaab-logo").src = "ui/images/logo.png";
+                    $(".pure-menu-link[href='#beta-testeur']").css('transition', 'all 0.5s ease');
+                    $("#jaab-logo").attr('src','ui/images/logo.png');
                     $("#press").css('color', '#FFFFFF');
+                    $("#press").css('transition', 'all 0.5s ease');
                     window.location.hash = 'decouvrez-comment-jaab-fonctionne';
                 }
                 else if(scroll_pos > positionElementInPage3-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
-                    document.getElementById("jaab-logo").src = "ui/images/logo2.png";
+                    $("#jaab-logo").attr('src','ui/images/logo2.png');
                     $("#press").css('color', '#3381f6');
-                    window.location.hash = 'rejoignez-les-evenements-de-vos-amis';
+                    window.location.hash = 'rejoignez-les-evenements-de-vos-amis';                  
                 }
                 else if(scroll_pos > positionElementInPage2-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
-                    document.getElementById("jaab-logo").src = "ui/images/logo3.png";
+                    $("#jaab-logo").attr('src','ui/images/logo3.png');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
                     $("#press").css('color', '#FFFFFF');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
@@ -79,20 +82,22 @@ $(document).ready(function(){
                 }
                  else if(scroll_pos > positionElementInPage1-80) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
-                    document.getElementById("jaab-logo").src = "ui/images/logo2.png";
+                    $("#jaab-logo").attr('src','ui/images/logo2.png');
                     $("#press").css('color', '#3381f6');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
                     window.location.hash = 'tous-vos-evenements-au-meme-endroit';
                 }
                  else {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#ffcb64');
-                    document.getElementById("jaab-logo").src = "ui/images/logo.png";
+                    $(".pure-menu-link[href='#beta-testeur']").css('transition', 'all 0.5s ease');
+                    $("#jaab-logo").attr('src','ui/images/logo.png');
                     $("#press").css('color', '#FFFFFF');
+                    $("#press").css('transition', 'all 0.5s ease');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
-                    window.location.hash = '';
+                    window.location.hash = 'intro';
                 }
             });
-        });
+
 
 
 
