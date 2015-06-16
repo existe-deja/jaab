@@ -24,6 +24,7 @@
   <body>
     <?php echo $this->render(Base::instance()->get('content')); ?>
     <script type="text/javascript" src="ui/js/vendors/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="ui/js/vendors/scrollReveal.min.js"></script>
     <script type="text/javascript" src="ui/js/main.js"></script>
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -33,6 +34,9 @@
 
       ga('create', 'UA-64085792-1', 'auto');
       ga('send', 'pageview');
+    </script>
+    <script>
+      window.sr = new scrollReveal();
     </script>
   </body>
 </html>

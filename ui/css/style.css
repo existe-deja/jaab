@@ -242,24 +242,20 @@ input[type='submit']{
   -moz-border-radius: 200px;
   -webkit-border-radius: 200px;
   border-radius: 200px;
+  animation: pulse 1s ease infinite;
 }
-/*
-position: absolute;
-  top: 96%;
-  left: 48%;
-  margin: 0 0;
-  padding: 32px;
-  background-color: #FFF;
-  -moz-box-shadow: 0px 0px 12px 0px #cfcfcf;
--webkit-box-shadow: 0px 0px 12px 0px #cfcfcf;
--o-box-shadow: 0px 0px 12px 0px #cfcfcf;
-box-shadow: 0px 0px 12px 0px #cfcfcf;
-filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=12);
--moz-border-radius: 200px;
--webkit-border-radius: 200px;
-border-radius: 200px;
-*/
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 /* END SECTION 1 */
 /*****************/

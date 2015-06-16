@@ -54,6 +54,7 @@ $(document).ready(function() {
             var positionElementInPage2 = $('#scroll2').offset().top;
             var positionElementInPage3 = $('#scroll3').offset().top;
             var positionElementInPage4 = $('#scroll4').offset().top;
+            
             $(document).scroll(function() { 
                 scroll_pos = $(this).scrollTop();
                 if(scroll_pos > positionElementInPage4-60) {
@@ -100,4 +101,33 @@ $(document).ready(function() {
 
 
 
+var current 
 
+$(function() {          
+    $('body').mousewheel(function(event, delta) {
+        var $current = $('div.current');
+
+        console.log(delta);
+        console.log($current);
+
+        if (delta > 0) {
+            $prev = $current.prev();
+
+            if ($prev.length) {
+                $('body').scrollTo($prev, 100);
+                $current.removeClass('current');
+                $prev.addClass('current');
+            }
+        } else {
+            $next = $current.next();
+
+            if ($next.length) {
+                $('body').scrollTo($next, 100);
+                $current.removeClass('current');
+                $next.addClass('current');
+            }
+        }
+
+        event.preventDefault();
+    });
+});
