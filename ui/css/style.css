@@ -17,6 +17,7 @@ html, body{
 }
 a,p, h1, h2{
   font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
 }
 img{
   max-width:100%;height:auto;display:block
@@ -221,20 +222,51 @@ input[type='submit']{
 .plain:nth-of-type(1) .email-wrapper{
   background: #ffcb64;
 }
-.plain:nth-of-type(1) .wrapper img{
+.plain:nth-of-type(1) .wrapper img {
+  
+}  
+.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) .pure-pos {
   position: absolute;
   right: 14%;
 }
-.plain:nth-of-type(1) .wrapper a{
+.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) a {
+  top: 38%;
+  right: 34%;
+  z-index: 1;
+  position: absolute;
+  color:#ffffff;
+}
+.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) span:nth-of-type(1) {
+  width: 60px;
+  height: 60px;
+  display:block;
+  margin: 0 auto;
+  background: #fff url(../images/sprite-icons.png) no-repeat;
+  background-position: -93px -155px;
+  -moz-box-shadow: 0px 0px 5px 0px #656565;
+  -webkit-box-shadow: 0px 0px 5px 0px #656565;
+  -o-box-shadow: 0px 0px 5px 0px #656565;
+  box-shadow: 0px 0px 5px 0px #656565;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+  border-radius: 200px;
+}
+.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) span:nth-of-type(2) {
+  position: relative;
+  top: 20px;,
+}
+.plain:nth-of-type(1) .pure-u-1:nth-of-type(3) a{
   z-index:1;
   position: absolute;
   top: 100%;
   left: 50%;
   margin-left: -32px;
   margin-top: -32px;
-  padding: 32px;
+  width:64px;
+  height:64px;
   background: #fff url(../images/sprite-icons.png) no-repeat;
-  background-position: 7px -158px;
+  background-position: 7px -159px;
   -moz-box-shadow: 0px 0px 12px 0px #9b9b9b;
   -webkit-box-shadow: 0px 0px 12px 0px #9b9b9b;
   -o-box-shadow: 0px 0px 12px 0px #9b9b9b;
@@ -496,6 +528,7 @@ footer .swag-si-tu-lis-ca li:last-child{
   .plain:nth-of-type(1) .wrapper img,
   .plain:nth-of-type(2) .wrapper img{
     position: initial;
+    margin: 0 auto;
   }
   .plain:nth-of-type(4) header {
     padding-bottom: 100px;
@@ -536,6 +569,15 @@ footer .swag-si-tu-lis-ca li:last-child{
   .plain:nth-of-type(1) form{
     margin-bottom: 40px;
   }
+  .plain:nth-of-type(1) .pure-u-1:nth-of-type(2) .pure-pos {
+    position:initial;
+  }
+  .plain:nth-of-type(1) .pure-u-1:nth-of-type(2) a {
+    top:67%;
+    right: 50%;
+    margin-right: -72px;
+  }
+
   /* END SECTION 1 */
   /*****************/
 
