@@ -29,7 +29,7 @@ h2{
   font-size: 1.4em;
   font-weight: 600;
 }
-*:focus, input:focus, select:focus, textarea:focus, button:focus {
+a, *:focus, input:focus, select:focus, textarea:focus, button:focus {
   outline: 0;
 }
 .plain:nth-of-type(1){
@@ -202,6 +202,9 @@ input[type='submit']{
   padding: 14px 26px;
   border-radius: 20px; 
 }
+.pure-menu-list .press {
+  color:#ffffff;
+}
 /* END MENU */
 /************/
 
@@ -225,18 +228,18 @@ input[type='submit']{
 .plain:nth-of-type(1) .wrapper img {
   
 }  
-.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) .pure-pos {
+.posPhone {
   position: absolute;
   right: 14%;
 }
-.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) a {
+.openVid {
   top: 38%;
   right: 34%;
   z-index: 1;
   position: absolute;
   color:#ffffff;
 }
-.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) span:nth-of-type(1) {
+.plain:nth-of-type(1) .btnLink {
   width: 60px;
   height: 60px;
   display:block;
@@ -252,11 +255,11 @@ input[type='submit']{
   -webkit-border-radius: 200px;
   border-radius: 200px;
 }
-.plain:nth-of-type(1) .pure-u-1:nth-of-type(2) span:nth-of-type(2) {
+.plain:nth-of-type(1) .txtLink {
   position: relative;
   top: 20px;,
 }
-.plain:nth-of-type(1) .pure-u-1:nth-of-type(3) a{
+.plain:nth-of-type(1) .scrollAction{
   z-index:1;
   position: absolute;
   top: 100%;
@@ -573,10 +576,10 @@ footer .swag-si-tu-lis-ca li:last-child{
   .plain:nth-of-type(1) form{
     margin-bottom: 40px;
   }
-  .plain:nth-of-type(1) .pure-u-1:nth-of-type(2) .pure-pos {
+  ..posPhone {
     position:initial;
   }
-  .plain:nth-of-type(1) .pure-u-1:nth-of-type(2) a {
+  .openVid {
     top:67%;
     right: 50%;
     margin-right: -72px;
