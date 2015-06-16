@@ -556,6 +556,10 @@ footer .swag-si-tu-lis-ca li:last-child{
   .pure-menu-list{
     display: none !important;
   }
+  .pure-menu img {
+    left: 50%;
+    margin-left: -90px;
+  }
   /* END MENU */
   /************/
 
@@ -614,3 +618,14 @@ footer .swag-si-tu-lis-ca li:last-child{
 }
 /* END RESPONSIVE */
 /******************/
+
+/*  TEST ANIMATION  */
+
+#popPlayer {
+  display:none;
+  z-index :2;
+  position: absolute;
+  width:100%;
+  height:100%;
+  background: red;
+}
