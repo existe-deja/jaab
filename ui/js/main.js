@@ -74,7 +74,7 @@ $(document).ready(function(){
     $beta_testeur.css('background-color', opt.bg_color);
     $beta_testeur.css('color', opt.color);
     $logo.attr('src', opt.src_logo);
-    $press.css('color', opt.color;
+    $press.css('color', opt.color);
     window.location.hash = opt.new_hash;
   }
 
