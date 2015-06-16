@@ -7,11 +7,6 @@ class MainController{
   }
 
 
-  function beforeRoute(){
-    // header('Access-Control-Allow-Origin: *');
-  }
-
-
   function home(){
     session_start();
     // 403 on mobile...
