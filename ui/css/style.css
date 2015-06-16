@@ -311,11 +311,15 @@ input[type='submit']{
 .plain:nth-of-type(3) .wrapper{
   position: relative;
 }
+.plain:nth-of-type(3) img {
+  margin: 0 auto;
+}
 #rocket{
   position: absolute;
   bottom: -50px;
   right: 10%;
 }
+
 /* END OF SECTION 3 */
 /********************/
 
@@ -325,10 +329,10 @@ input[type='submit']{
 .plain:nth-of-type(4){
   padding-top: 100px;
 }
-.plain:nth-of-type(4) header{
+.plain:nth-of-type(4) .wrapper header{
   padding-bottom: 130px;
 }
-.plain:nth-of-type(4) img{
+.plain:nth-of-type(4) .wrapper img{
   margin-top:-50px;
 }
 .plain:nth-of-type(4) .features li:nth-child(1) .list-icon{
@@ -558,8 +562,12 @@ footer .swag-si-tu-lis-ca li:last-child{
     width: 160px;
     margin: 40px auto 0;
   }
+  .plain:nth-of-type(5) .wrapper p{
+    text-align: center;
+  }
   /* END SECTION 5 */
   /*****************/
+
 }
 /* END RESPONSIVE */
 /******************/
