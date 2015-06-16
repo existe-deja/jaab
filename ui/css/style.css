@@ -232,7 +232,7 @@ input[type='submit']{
   position: absolute;
   right: 14%;
 }
-.openVid {
+.openVidStyle {
   top: 38%;
   right: 34%;
   z-index: 1;
@@ -625,14 +625,14 @@ footer .swag-si-tu-lis-ca li:last-child{
 /*  TEST ANIMATION  */
 
 #popPlayer {
-  display:none;
-  z-index :2;
+  display: none;
+  z-index :4;
   text-align: center;
   position: fixed;
   width:100%;
   height:100%;
-  background: #3381f6;
 }
+
 .containerVideo {
   width: 100%;
   height: 100%;
@@ -653,7 +653,8 @@ a.closeVid {
   height: 60px;
   display: block;
   margin: 0 auto;
-  background: #fff;
+  background: #fff url(../images/sprite-icons.png) no-repeat;
+  background-position: -145px -155px;
   -moz-box-shadow: 0px 0px 5px 0px #656565;
   -webkit-box-shadow: 0px 0px 5px 0px #656565;
   -o-box-shadow: 0px 0px 5px 0px #656565;
@@ -664,3 +665,92 @@ a.closeVid {
   border-radius: 200px;
 }
 
+.ripple-wrap {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  font-size: 0;
+  z-index: 3;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+@-webkit-keyframes RIPPLER {
+  0%   { border-width: 0; }
+  40% { 
+    height: 0;
+    width: 0;
+    border-width: 1500px;
+    margin-top: -1500px;
+    margin-left:-1500px; 
+    border-color: #3381f6;
+  }
+  
+  41% { 
+    height: 0;
+    width: 0;
+    border-width: 1500px;
+    margin-top: -1500px;
+    margin-left:-1500px; 
+    border-color: #3381f6;
+  }
+  100% {
+    border-width: 1500px;
+    height: 2000px;
+    width: 2000px;
+    margin-top: -2500px;
+    margin-left:-2500px;
+    border-color: #fff;
+  }
+}
+@keyframes RIPPLER {
+  0%   { border-width: 0; }
+  40% { 
+    height: 0;
+    width: 0;
+    border-width: 1500px;
+    margin-top: -1500px;
+    margin-left:-1500px; 
+    border-color: #3381f6;
+  }
+  41% { 
+    height: 0;
+    width: 0;
+    border-width: 1500px;
+    margin-top: -1500px;
+    margin-left:-1500px; 
+    border-color: #3381f6;
+  }
+  100% {
+    border-width: 1500px;
+    height: 2000px;
+    width: 2000px;
+    margin-top: -2500px;
+    margin-left:-2500px;
+    border-color: #fff;
+  }
+}
+.ripple {
+  display: block;
+  height: 0;
+  width: 0;
+  border-width: 0px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-radius: 100%;
+  position: absolute;
+  top: 300px;
+  left: 300px;
+  -webkit-animation: none;
+  animation: none;
+}
+.ripple-wrap.goripple {
+  display: block;
+}
+.ripple-wrap.goripple .ripple {
+ -webkit-animation-name: RIPPLER;
+ -webkit-animation-duration: 1.5s;
+ -webkit-animation-fill-mode: forwards;
+ animation-name: RIPPLER;
+ animation-duration: 1.5s;
+ animation-fill-mode: forwards;
+
+}
