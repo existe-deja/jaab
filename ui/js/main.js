@@ -42,12 +42,15 @@ $(document).ready(function() {
      });
   });
 
+
+/* FUNCTION REFRESH */
 /*$(document).ready(function(){      
      $(window).resize(function() {
        setTimeout( function(){
        window.location.href = window.location.href;
      },1000); 
 });*/
+/* END FUNCTION REFRESH */
             
             var scroll_pos = 0;
             var positionElementInPage1 = $('#scroll1').offset().top;
@@ -61,7 +64,7 @@ $(document).ready(function() {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
                     $(".pure-menu-link[href='#beta-testeur']").css('transition', 'all 0.5s ease');
-                    $("#jaab-logo").attr('src','ui/images/logo.png');
+                    $("#jaab-logo").attr('src','ui/images/logo3.svg');
                     $("#press").css('color', '#FFFFFF');
                     $("#press").css('transition', 'all 0.5s ease');
                     window.location.hash = 'decouvrez-comment-jaab-fonctionne';
@@ -69,13 +72,13 @@ $(document).ready(function() {
                 else if(scroll_pos > positionElementInPage3-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
-                    $("#jaab-logo").attr('src','ui/images/logo2.png');
+                    $("#jaab-logo").attr('src','ui/images/logo2.svg');
                     $("#press").css('color', '#3381f6');
                     window.location.hash = 'rejoignez-les-evenements-de-vos-amis';                  
                 }
                 else if(scroll_pos > positionElementInPage2-60) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
-                    $("#jaab-logo").attr('src','ui/images/logo3.png');
+                    $("#jaab-logo").attr('src','ui/images/logo3.svg');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
                     $("#press").css('color', '#FFFFFF');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
@@ -83,7 +86,7 @@ $(document).ready(function() {
                 }
                  else if(scroll_pos > positionElementInPage1-80) {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
-                    $("#jaab-logo").attr('src','ui/images/logo2.png');
+                    $("#jaab-logo").attr('src','ui/images/logo2.svg');
                     $("#press").css('color', '#3381f6');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
                     window.location.hash = 'tous-vos-evenements-au-meme-endroit';
@@ -91,7 +94,7 @@ $(document).ready(function() {
                  else {
                     $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#ffcb64');
                     $(".pure-menu-link[href='#beta-testeur']").css('transition', 'all 0.5s ease');
-                    $("#jaab-logo").attr('src','ui/images/logo.png');
+                    $("#jaab-logo").attr('src','ui/images/logo.svg');
                     $("#press").css('color', '#FFFFFF');
                     $("#press").css('transition', 'all 0.5s ease');
                     $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
@@ -100,4 +103,35 @@ $(document).ready(function() {
             });
 
 
+/* FUNCTION AUTOSCROLL MOUSE-WHEEL */
+/*(function() {
+  var delay = false;
 
+  $(document).on('mousewheel DOMMouseScroll', function(event) {
+    event.preventDefault();
+    if(delay) return;
+
+    delay = true;
+    setTimeout(function(){delay = false},200)
+
+    var wd = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+
+    var a= document.getElementsByTagName('a');
+    if(wd < 0) {
+      for(var i = 0 ; i < a.length ; i++) {
+        var t = a[i].getClientRects()[0].top;
+        if(t >= 40) break;
+      }
+    }
+    else {
+      for(var i = a.length-1 ; i >= 0 ; i--) {
+        var t = a[i].getClientRects()[0].top;
+        if(t < -20) break;
+      }
+    }
+    $('html,body').animate({
+      scrollTop: a[i].offsetTop
+    });
+  });
+})();*/
+/* END FUNCTION AUTOSCROLL MOUSE-WHEEL */

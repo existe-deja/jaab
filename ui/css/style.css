@@ -176,6 +176,7 @@ input[type='submit']{
   position: fixed;
   left: 100px;
   padding: 0;
+  width:180px;
 }
 .pure-menu-active>.pure-menu-link,
 .pure-menu-link:hover,
