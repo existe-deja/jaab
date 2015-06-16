@@ -28,7 +28,6 @@ $(document).ready(function(){
       context: document.body,
     }).success(function(data){
       data = JSON.parse(data);
-      console.log(data);
       if(data.status){
         $form.attr('class', 'good');
       }else{
@@ -48,65 +47,80 @@ $(document).ready(function(){
 
   /* SCROLL AUTO */
   $('.scrollAction').click( function() { // Au clic sur un élément
-      var page = $(this).attr('href'); // Page cible
-      var speed = 750; // Durée de l'animation (en ms)
-      $('html, body').animate( { 
-        scrollTop: $(page).offset().top+55 }, 
-        speed ); // Go
-      return false;
-     });
+    var page = $(this).attr('href'); // Page cible
+    var speed = 750; // Durée de l'animation (en ms)
+    $('html, body').animate( { 
+      scrollTop: $(page).offset().top+55 }, 
+      speed ); // Go
+    return false;
+   });
   /* FIN SCROLL AUTO */
 
   /* CHANGEMENT STYLE MENU */
-  var scroll_pos = 0;
-  var positionElementInPage1 = $('#pannel-one').offset().top;
-  var positionElementInPage2 = $('#pannel-two').offset().top;
-  var positionElementInPage3 = $('#pannel-three').offset().top;
-  var positionElementInPage4 = $('#pannel-four').offset().top;
+  var scroll_pos = 0
+    , positionElementInPage1 = $('#pannel-one').offset().top
+    , positionElementInPage2 = $('#pannel-two').offset().top
+    , positionElementInPage3 = $('#pannel-three').offset().top
+    , positionElementInPage4 = $('#pannel-four').offset().top
+    , $beta_testeur = $(".pure-menu-link[href='#beta-testeur']")
+    , $press = $(".press")
+    , $logo = $("#jaab-logo")
+    ;
+  
+  $beta_testeur.css('transition', 'all 0.5s ease');
+  $press.css('transition', 'all 0.5s ease');
 
-            $(document).scroll(function() { 
-                scroll_pos = $(this).scrollTop();
-                if(scroll_pos > positionElementInPage4-60) {
-                    $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
-                    $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
-                    $(".pure-menu-link[href='#beta-testeur']").css('transition', 'all 0.5s ease');
-                    $("#jaab-logo").attr('src','ui/images/logo-green.svg');
-                    $(".press").css('color', '#FFFFFF');
-                    $(".press").css('transition', 'all 0.5s ease');
-                    window.location.hash = 'decouvrez-comment-jaab-fonctionne';
-                }
-                else if(scroll_pos > positionElementInPage3-60) {
-                    $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
-                    $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
-                    $("#jaab-logo").attr('src','ui/images/logo-blue.svg');
-                    $(".press").css('color', '#3381f6');
-                    window.location.hash = 'rejoignez-les-evenements-de-vos-amis';                  
-                }
-                else if(scroll_pos > positionElementInPage2-60) {
-                    $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#FFFFFF');
-                    $("#jaab-logo").attr('src','ui/images/logo-green.svg');
-                    $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
-                    $(".press").css('color', '#FFFFFF');
-                    $(".pure-menu-link[href='#beta-testeur']").css('color', '#86c56c');
-                    window.location.hash = 'retrouvez-tous-vos-amis-simplement';
-                }
-                 else if(scroll_pos > positionElementInPage1-80) {
-                    $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#3381f6');
-                    $("#jaab-logo").attr('src','ui/images/logo-blue.svg');
-                    $(".press").css('color', '#3381f6');
-                    $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
-                    window.location.hash = 'tous-vos-evenements-au-meme-endroit';
-                }
-                 else {
-                    $(".pure-menu-link[href='#beta-testeur']").css('background-color', '#ffcb64');
-                    $(".pure-menu-link[href='#beta-testeur']").css('transition', 'all 0.5s ease');
-                    $("#jaab-logo").attr('src','ui/images/logo-white.svg');
-                    $(".press").css('color', '#FFFFFF');
-                    $(".press").css('transition', 'all 0.5s ease');
-                    $(".pure-menu-link[href='#beta-testeur']").css('color', '#FFFFFF');
-                    window.location.hash = 'intro';
-                }
-            });
+  function updateStyleMenu(opt){
+    $beta_testeur.css('background-color', opt.bg_color);
+    $beta_testeur.css('color', opt.color);
+    $logo.attr('src', opt.src_logo);
+    $press.css('color', opt.color;
+    window.location.hash = opt.new_hash;
+  }
+
+  $(document).scroll(function() { 
+  scroll_pos = $(this).scrollTop();
+  if(scroll_pos > positionElementInPage4-60) {
+    updateStyleMenu({
+      bg_color: '#FFFFFF', 
+      color:'#86c56c',
+      src_logo: 'ui/images/logo-green.svg',
+      new_hash: 'decouvrez-comment-jaab-fonctionne'
+    });
+  }
+  else if(scroll_pos > positionElementInPage3-60) {
+    updateStyleMenu({
+      bg_color: '#3381f6', 
+      color:'#FFFFFF',
+      src_logo: 'ui/images/logo-blue.svg',
+      new_hash: 'rejoignez-les-evenements-de-vos-amis'
+    });
+  }
+  else if(scroll_pos > positionElementInPage2-60) {
+    updateStyleMenu({
+      bg_color: '#FFFFFF', 
+      color:'#86c56c',
+      src_logo: 'ui/images/logo-green.svg',
+      new_hash: 'retrouvez-tous-vos-amis-simplement'
+    });
+  }
+  else if(scroll_pos > positionElementInPage1-80) {
+    updateStyleMenu({
+      bg_color: '#3381f6', 
+      color:'#FFFFFF',
+      src_logo: 'ui/images/logo-blue.svg',
+      new_hash: 'tous-vos-evenements-au-meme-endroit'
+    });
+  }
+  else {
+    updateStyleMenu({
+      bg_color: '#ffcb64', 
+      color:'#FFFFFF',
+      src_logo: 'ui/images/logo-white.svg',
+      new_hash: 'intro'
+    });
+  }
+  });
   /* CHANGEMENT STYLE MENU */
 
   /* ANIMATION POPIN VIDEO */
@@ -117,8 +131,7 @@ $(document).ready(function(){
    $( ".closeVid" ).click(function() {
        $("#popPlayer").css('display', 'none');
     });
-/* FIN ANIMATION POPIN VIDEO */
-
+  /* FIN ANIMATION POPIN VIDEO */
 });
 
 
