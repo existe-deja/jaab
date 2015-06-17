@@ -11,22 +11,24 @@
 $(document).ready(function(){
 
   /* SUBSCRIBE */
-  $('.subscribe-form').on('submit', function(e){
-    e.preventDefault();
-    $form = $(this);
-    $subscriber = $form.find("[name=subscriber]"); 
-    subscriber = $subscriber.val();
-    token = $form.find("[name=token]").val();
+  $('.subscribe-form').on('submit', 
+    function(e){
+      e.preventDefault();
+      $form = $(this);
+      $subscriber = $form.find("[name=subscriber]"); 
+      subscriber = $subscriber.val();
+      token = $form.find("[name=token]").val();
 
-    $.ajax({
-      type: 'POST',
-      url: $form.attr('action'),
-      data: {
-        'subscriber': subscriber,
-        'token': token
-      },  
+      $.ajax({
+        type: 'POST',
+        url: $form.attr('action'),
+        data: {
+          'subscriber': subscriber,
+          'token': token
+        },  
       context: document.body,
-    }).success(function(data){
+      })
+      .success(function(data){
       data = JSON.parse(data);
       if(data.status){
         $form.attr('class', 'good');
@@ -58,10 +60,10 @@ $(document).ready(function(){
 
   /* CHANGEMENT STYLE MENU */
   var scroll_pos = 0
-    , positionElementInPage1 = $('#pannel-one').offset().top
-    , positionElementInPage2 = $('#pannel-two').offset().top
-    , positionElementInPage3 = $('#pannel-three').offset().top
-    , positionElementInPage4 = $('#pannel-four').offset().top
+    , positionElementInPage1 = $('#pannel-one').offset().top-80
+    , positionElementInPage2 = $('#pannel-two').offset().top-150
+    , positionElementInPage3 = $('#pannel-three').offset().top-60
+    , positionElementInPage4 = $('#pannel-four').offset().top-160
     , $beta_testeur = $(".pure-menu-link[href='#beta-testeur']")
     , $press = $(".press")
     , $logo = $("#jaab-logo")
@@ -80,7 +82,7 @@ $(document).ready(function(){
 
   $(document).scroll(function() { 
   scroll_pos = $(this).scrollTop();
-  if(scroll_pos > positionElementInPage4-160) {
+  if(scroll_pos > positionElementInPage4) {
     updateStyleMenu({
       bg_color: '#ffffff', 
       color_beta:'#86c56c',
@@ -89,7 +91,7 @@ $(document).ready(function(){
       new_hash: 'decouvrez-comment-jaab-fonctionne'
     });
   }
-  else if(scroll_pos > positionElementInPage3-60) {
+  else if(scroll_pos > positionElementInPage3) {
     updateStyleMenu({
       bg_color: '#3381f6', 
       color_beta:'#ffffff',
@@ -98,7 +100,7 @@ $(document).ready(function(){
       new_hash: 'rejoignez-les-evenements-de-vos-amis'
     });
   }
-  else if(scroll_pos > positionElementInPage2-150) {
+  else if(scroll_pos > positionElementInPage2) {
     updateStyleMenu({
       bg_color: '#FFFFFF', 
       color_beta:'#86c56c',
@@ -107,7 +109,7 @@ $(document).ready(function(){
       new_hash: 'retrouvez-tous-vos-amis-simplement'
     });
   }
-  else if(scroll_pos > positionElementInPage1-80) {
+  else if(scroll_pos > positionElementInPage1) {
     updateStyleMenu({
       bg_color: '#3381f6', 
       color_beta:'#FFFFFF',
@@ -132,9 +134,8 @@ var ripple_wrap = $('.ripple-wrap'),
     finish = false,
      
       monitor = function(el) {
-        var computed = window.getComputedStyle(el, null),
-            borderwidth = parseFloat(computed.getPropertyValue('border-left-width'));
-
+      var computed = window.getComputedStyle(el, null),
+          borderwidth = parseFloat(computed.getPropertyValue('border-left-width'));
 
         if (!finish && borderwidth >= 1500) {
           el.style.WebkitAnimationPlayState = "paused";
@@ -145,34 +146,35 @@ var ripple_wrap = $('.ripple-wrap'),
           el.style.animationPlayState = "running";
           return;
         } else {
-            window.requestAnimationFrame(function() {monitor(el)});
-        }
-      };
-  
- storedcontent = $('#content-2').html();
-  $('#content-2').remove();*/
+            window.requestAnimationFrame(function() {
+              monitor(el)
+            });
+          }
+        };
   
   rippler.bind("webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend", 
     function(e){
-     ripple_wrap.removeClass('goripple');
-    });
-
-  $('body').on('click', ".openVid", function(e) {
-    rippler.css('left', e.clientX + 'px');
-    rippler.css('top', e.clientY + 'px');
-    e.preventDefault();
-    finish = false;
-    ripple_wrap.addClass('goripple');
-    $("#popPlayer").delay("slow").fadeIn("slow");
-    window.requestAnimationFrame(function() {monitor(rippler[0])});  
+    ripple_wrap.removeClass('goripple');
   });
+
+  $('body').on('click', ".openVid", 
+    function(e) {
+      rippler.css('left', e.clientX + 'px');
+      rippler.css('top', e.clientY + 'px');
+      e.preventDefault();
+      finish = false;
+      ripple_wrap.addClass('goripple');
+      $("#popPlayer").delay("slow").fadeIn("slow");
+      window.requestAnimationFrame(
+        function() {
+          monitor(rippler[0])
+        });  
+    });
   
   $('body').on('click', ".closeVid", 
     function(e) {
       $("#popPlayer").delay("fast").fadeOut("fast");
+      e.preventDefault();
       finish = true;
-       if(scroll_pos < 400) {
-        }
-       else {
-     });
+    });
   });
