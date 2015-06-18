@@ -1,34 +1,38 @@
- /* TRACKING ANALYTICS */
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-64085792-1', 'auto');
-      ga('send', 'pageview');
-  /* FIN TRACKING ANALYTICS */
-
 $(document).ready(function(){
+  var speed = 750 // Durée de l'animation scrol(en ms)
+    , ripple_wrap = $('.ripple-wrap')
+    , rippler = $('.ripple')
+    , finish_ripple = false
+    , scroll_pos = 0
+    , positionElementInPage1 = $('#pannel-one').offset().top-80
+    , positionElementInPage2 = $('#pannel-two').offset().top-150
+    , positionElementInPage3 = $('#pannel-three').offset().top-60
+    , positionElementInPage4 = $('#pannel-four').offset().top-160
+    , $beta_testeur = $('.pure-menu-link[href=#beta-testeur]')
+    , $press = $('.press')
+    , $logo = $('#jaab-logo')
+    , ANIMATION_END = 'webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend'
+    ;
+
 
   /* SUBSCRIBE */
-  $('.subscribe-form').on('submit', 
-    function(e){
-      e.preventDefault();
-      $form = $(this);
-      $subscriber = $form.find("[name=subscriber]"); 
-      subscriber = $subscriber.val();
-      token = $form.find("[name=token]").val();
+  $('.subscribe-form').on('submit', function(e){
+    e.preventDefault();
+    $form = $(this);
+    $subscriber = $form.find('[name=subscriber]'); 
+    subscriber = $subscriber.val();
+    token = $form.find('[name=token]').val();
 
-      $.ajax({
-        type: 'POST',
-        url: $form.attr('action'),
-        data: {
-          'subscriber': subscriber,
-          'token': token
-        },  
+    $.ajax({
+      type: 'POST',
+      url: $form.attr('action'),
+      data: {
+        'subscriber': subscriber,
+        'token': token
+      },  
       context: document.body,
-      })
-      .success(function(data){
+    })
+    .success(function(data){
       data = JSON.parse(data);
       if(data.status){
         $form.attr('class', 'good');
@@ -44,33 +48,29 @@ $(document).ready(function(){
 
     return false;
   });
-  /* FIN SUBSCRIBE */
+  /* END SUBSCRIBE */
 
 
-  /* SCROLL AUTO */
-  $('.scrollAction').click( function() { // Au clic sur un élément
+
+  /* AUTO SCROLL */
+  $('.scrollAction').on('click', function() { // Au clic sur un élément
     var page = $(this).attr('href'); // Page cible
-    var speed = 750; // Durée de l'animation (en ms)
-    $('html, body').animate( { 
-      scrollTop: $(page).offset().top+55 }, 
-      speed ); // Go
+     
+    $('html, body').animate({ 
+        scrollTop: $(page).offset().top+55
+      }, speed
+    );
+
     return false;
    });
-  /* FIN SCROLL AUTO */
+  /* END AUTO SCROLL */
 
-  /* CHANGEMENT STYLE MENU */
-  var scroll_pos = 0
-    , positionElementInPage1 = $('#pannel-one').offset().top-80
-    , positionElementInPage2 = $('#pannel-two').offset().top-150
-    , positionElementInPage3 = $('#pannel-three').offset().top-60
-    , positionElementInPage4 = $('#pannel-four').offset().top-160
-    , $beta_testeur = $(".pure-menu-link[href='#beta-testeur']")
-    , $press = $(".press")
-    , $logo = $("#jaab-logo")
-    ;
-  
+
+
+  /* UPDATE STYLE MENU */ 
   $beta_testeur.css('transition', 'all 0.5s ease');
   $press.css('transition', 'all 0.5s ease');
+
 
   function updateStyleMenu(opt){
     $beta_testeur.css('background-color', opt.bg_color);
@@ -80,101 +80,102 @@ $(document).ready(function(){
     window.location.hash = opt.new_hash;
   }
 
+
   $(document).scroll(function() { 
-  scroll_pos = $(this).scrollTop();
-  if(scroll_pos > positionElementInPage4) {
-    updateStyleMenu({
-      bg_color: '#ffffff', 
-      color_beta:'#86c56c',
-      color_press:'#ffffff',
-      src_logo: 'ui/images/logo-green.svg',
-      new_hash: 'decouvrez-comment-jaab-fonctionne'
-    });
-  }
-  else if(scroll_pos > positionElementInPage3) {
-    updateStyleMenu({
-      bg_color: '#3381f6', 
-      color_beta:'#ffffff',
-      color_press:'#3381f6',
-      src_logo: 'ui/images/logo-blue.svg',
-      new_hash: 'rejoignez-les-evenements-de-vos-amis'
-    });
-  }
-  else if(scroll_pos > positionElementInPage2) {
-    updateStyleMenu({
-      bg_color: '#FFFFFF', 
-      color_beta:'#86c56c',
-      color_press:'#86c56c',
-      src_logo: 'ui/images/logo-green.svg',
-      new_hash: 'retrouvez-tous-vos-amis-simplement'
-    });
-  }
-  else if(scroll_pos > positionElementInPage1) {
-    updateStyleMenu({
-      bg_color: '#3381f6', 
-      color_beta:'#FFFFFF',
-      color_press:'#3381f6',
-      src_logo: 'ui/images/logo-blue.svg',
-      new_hash: 'tous-vos-evenements-au-meme-endroit'
-    });
-  }
-  else {
-    updateStyleMenu({
-      bg_color: '#ffcb64', 
-      color_beta:'#FFFFFF',
-      color_press:'#FFFFFF',
-      src_logo: 'ui/images/logo-white.svg',
-      new_hash: 'intro'
-    });
-  }
+    scroll_pos = $(this).scrollTop();
+    if(scroll_pos > positionElementInPage4) {
+      updateStyleMenu({
+        bg_color: '#ffffff', 
+        color_beta:'#86c56c',
+        color_press:'#ffffff',
+        src_logo: 'ui/images/logo-green.svg',
+        new_hash: 'decouvrez-comment-jaab-fonctionne'
+      });
+    }
+    else if(scroll_pos > positionElementInPage3) {
+      updateStyleMenu({
+        bg_color: '#3381f6', 
+        color_beta:'#ffffff',
+        color_press:'#3381f6',
+        src_logo: 'ui/images/logo-blue.svg',
+        new_hash: 'rejoignez-les-evenements-de-vos-amis'
+      });
+    }
+    else if(scroll_pos > positionElementInPage2) {
+      updateStyleMenu({
+        bg_color: '#FFFFFF', 
+        color_beta:'#86c56c',
+        color_press:'#86c56c',
+        src_logo: 'ui/images/logo-green.svg',
+        new_hash: 'retrouvez-tous-vos-amis-simplement'
+      });
+    }
+    else if(scroll_pos > positionElementInPage1) {
+      updateStyleMenu({
+        bg_color: '#3381f6', 
+        color_beta:'#FFFFFF',
+        color_press:'#3381f6',
+        src_logo: 'ui/images/logo-blue.svg',
+        new_hash: 'tous-vos-evenements-au-meme-endroit'
+      });
+    }
+    else {
+      updateStyleMenu({
+        bg_color: '#ffcb64', 
+        color_beta:'#FFFFFF',
+        color_press:'#FFFFFF',
+        src_logo: 'ui/images/logo-white.svg',
+        new_hash: 'intro'
+      });
+    }
   });
+  /* END UPDATE STYLE MENU */
 
-var ripple_wrap = $('.ripple-wrap'),
-    rippler = $('.ripple'),
-    finish = false,
-     
-      monitor = function(el) {
-      var computed = window.getComputedStyle(el, null),
-          borderwidth = parseFloat(computed.getPropertyValue('border-left-width'));
 
-        if (!finish && borderwidth >= 1500) {
-          el.style.WebkitAnimationPlayState = "paused";
-          el.style.animationPlayState = "paused";
-        }
-        if (finish) {
-          el.style.WebkitAnimationPlayState = "running";
-          el.style.animationPlayState = "running";
-          return;
-        } else {
-            window.requestAnimationFrame(function() {
-              monitor(el)
-            });
-          }
-        };
+
+  monitor = function(el) {
+    var computed = window.getComputedStyle(el, null)
+      , borderwidth = parseFloat(computed.getPropertyValue('border-left-width'))
+      ;
+
+    if (!finish_ripple && borderwidth >= 1500) {
+      el.style.WebkitAnimationPlayState = 'paused';
+      el.style.animationPlayState = 'paused';
+    }
+    if (finish_ripple) {
+      el.style.WebkitAnimationPlayState = 'running';
+      el.style.animationPlayState = 'running';
+      return;
+    } else {
+      window.requestAnimationFrame(function() {
+        monitor(el);
+      });
+    }
+  };
   
-  rippler.bind("webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend", 
-    function(e){
+
+  rippler.bind(ANIMATION_END, function(e){
     ripple_wrap.removeClass('goripple');
   });
 
-  $('body').on('click', ".openVid", 
-    function(e) {
-      rippler.css('left', e.clientX + 'px');
-      rippler.css('top', e.clientY + 'px');
-      e.preventDefault();
-      finish = false;
-      ripple_wrap.addClass('goripple');
-      $("#popPlayer").delay("slow").fadeIn("slow");
-      window.requestAnimationFrame(
-        function() {
-          monitor(rippler[0])
-        });  
-    });
-  
-  $('body').on('click', ".closeVid", 
-    function(e) {
-      $("#popPlayer").delay("fast").fadeOut("fast");
-      e.preventDefault();
-      finish = true;
+
+  $('body').on('click', '.openVid', function(e) {
+    e.preventDefault();
+    rippler.css('left', e.clientX + 'px');
+    rippler.css('top', e.clientY + 'px');
+    finish_ripple = false;
+    ripple_wrap.addClass('goripple');
+    $('#popPlayer').delay('slow').fadeIn('slow');
+
+    window.requestAnimationFrame(function() {
+      monitor(rippler[0]);
     });
   });
+
+
+  $('body').on('click', '.closeVid', function(e) {
+    $('#popPlayer').delay('fast').fadeOut('fast');
+    e.preventDefault();
+    finish_ripple = true;
+  });
+});
