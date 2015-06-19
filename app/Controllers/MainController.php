@@ -70,6 +70,12 @@ class MainController{
   }
 
 
+  function pageHandler(){
+    F3::set('content', F3::get('PARAMS')['page'].'.htm');
+    echo View::instance()->render('layout.htm');
+  }
+
+
   function __destruct(){
 
   }
