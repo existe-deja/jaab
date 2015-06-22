@@ -13,6 +13,7 @@ class MainController{
     // $s = new Session();
     // F3::set('SESSION.csrf', $s->csrf());
     F3::set('content', 'home.htm');
+    F3::set('script', 'main.js');
 
     echo View::instance()->render('layout.htm');
   }
@@ -72,6 +73,7 @@ class MainController{
 
   function pageHandler(){
     F3::set('content', F3::get('PARAMS')['page'].'.htm');
+    
     echo View::instance()->render('layout.htm');
   }
 

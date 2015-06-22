@@ -1,26 +1,21 @@
-<!-- Menu -->
-<nav data-sr="over 1s, enter top, move 100px" class="menu">
-  <div class="pure-menu pure-menu-horizontal">
-      <img id="jaab-logo" class="pure-menu-heading" src="ui/images/logo-white.svg" />
-      <ul class="pure-menu-list">
-          <li class="pure-menu-item"><a href="#" class="press" class="pure-menu-link">Presse</a></li>
-          <li class="pure-menu-item"><a href="#beta-testeur" class="pure-menu-link scrollAction">Beta testeur</a></li>
-      </ul>
-  </div>
-</nav>
+<div class="scroller">
+  <a href="#intro" class="scroll-action active" data-scroll="yellow">Section 1</a>
+  <a href="#centralize" class="scroll-action" data-scroll="yellow">Section 2</a>
+  <a href="#friends" class="scroll-action" data-scroll="yellow">Section 3</a>
+  <a href="#simplify" class="scroll-action" data-scroll="yellow">Section 4</a>
+  <a href="#manual" class="scroll-action" data-scroll="yellow">Section 5</a>
+</div>
 
 <!-- First section -->
 <div id="popPlayer" class="">
   <a class="closeVid" href="#"></a>
   <div class="containerVideo">
-    <h1>Vidéo bientôt disponible !</h1>
-    <p>Revenez dans quelques jours pour la regarder.</p>
-    <!--<iframe class="playerVimeo" src="https://player.vimeo.com/video/95503999" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+    <iframe class="playerVimeo" src="https://player.vimeo.com/video/131462953" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div>
 </div>
 <div class="ripple-wrap"><div class="ripple"></div></div>
 
-<section id="pannel-zero" data-sr="over 1s, enter bottom, move 100px, scale 0%" class="plain">
+<section id="intro" data-sr="over 1s, enter bottom, move 100px, scale 0%" class="plain" data-scroll="yellow">
   <div class="pure-g">
     <div class="pure-u-1 pure-u-md-1-2">
       <div class="wrapper">
@@ -39,14 +34,14 @@
     </div>
     <div class="pure-u-1 pure-u-md-1-2">
       <div class="wrapper">
-       <a data-sr="wait 1s, over 1s, move 30px" class="scrollAction" href="#pannel-one"></a>
+       <a data-sr="wait 1s, over 1s, move 30px" class="scroll-action" href="#centralize"></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Second section -->
-<section class="plain" id="pannel-one">
+<section class="plain" data-scroll="blue" id="centralize">
   <header>
     <h1 data-sr="over 1s, ease-in-out 30px">Tous vos événements au même endroit</h1>
     <p data-sr="wait 0.2s, over 1s, ease-in-out 30px">Découvrez en un coup d'oeil tous les events auxquels vous êtes conviés. Invitez, partagez et rencontrez vos amis.</p>
@@ -86,7 +81,7 @@
 </section>
 
 <!-- Third section -->
-<section id="pannel-two" class="plain">
+<section id="friends" class="plain" data-scroll="white">
   <header>
     <h1 data-sr="wait 0.2s, over 1s, ease-in-out 30px">Retrouvez tous vos amis simplement</h1>
     <p data-sr="wait 0.4s, over 1s, ease-in-out 30px">Grâce à la synchronisation de l'ensemble de vos réseaux sociaux, touchez tous vos contacts en quelques clics.</p>
@@ -99,7 +94,7 @@
 </section>
 
 <!-- Fourth section -->
-<section id="pannel-three" class="plain">
+<section id="simplify" class="plain" data-scroll="blue">
   <header>
     <h1 data-sr="over 1s, ease-in-out 30px">Rejoignez les événements de vos amis</h1>
     <p data-sr="wait 0.2s, over 1s, ease-in-out 30px">Un accès rapide aux événements organisés par vos amis.</p>
@@ -139,7 +134,7 @@
 </section>
 
 <!-- Fifth section -->
-<section data-sr="over 1s, enter bottom, move 100px, scale 0%" id="pannel-four" class="plain">
+<section data-sr="over 1s, enter bottom, move 100px, scale 0%" id="manual" class="plain" data-scroll="blue">
   <div class="pure-g">
     <div class="pure-u-1 pure-u-md-1-2">
       <div class="wrapper">
@@ -155,16 +150,16 @@
 </section>
 
 <!-- Sixth section -->
-<section data-sr="over 1s, enter bottom, move 100px, scale 0%" id="pannel-five" class="plain">
+<section data-sr="over 1s, enter bottom, move 100px, scale 0%" id="pannel-five" class="plain" data-scroll="blue">
   <div class="pure-g">
-    <div id="beta-testeur" class="pure-u-1 pure-u-md-1-2">
+    <div class="pure-u-1 pure-u-md-1-2">
       <p data-sr="wait 0.4s, over 1s, enter left, move 100px">L'application n'est pas encore disponible dans votre region, vous pouvez toutefois vous inscrire à la version bêta pour découvrir Jaab en avant-première et la tester avec vos amis.</p>
       <?php echo View::instance()->render('email_form.htm'); ?>
     </div>
   </div>
 </section>
 
-<footer data-sr="over 1s, enter bottom, move 100px, scale 0%">
+<footer data-sr="over 1s, ease-in-out">
   <ul class="social">
     <li data-sr="over 0.8s, wait 0.2s, move 40px"><a id="scroll4"href="https://www.facebook.com/JAAB.fr" target="_blank"></a></li>
     <li data-sr="over 0.8s, wait 0.4s, move 40px"><a href="https://twitter.com/JAABapp" target="_blank"></a></li>
@@ -172,10 +167,9 @@
   </ul>
 
   <ul data-sr="over 0.8s, wait 0.8s, ease-in-out" class="swag-si-tu-lis-ca">
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Mention légales</a></li>
-    <li><a href="#">Politique de confidentialité</a></li>
-    <li><a href="#">En savoir plus</a></li>
-    <li><a href="#">Télécharger l'application</a></li>
+    <li><a href="mailto:contact@jaab.fr">Contact</a></li>
+    <li><a href="./kit-presse">Kit Presse</a></li>
+    <li><a href="./conditions-utilisation">Conditions d'utilisation</a></li>
+    <li><a href="./politique-confidentialite">Politique de confidentialité</a></li>
   </ul>
 </footer>

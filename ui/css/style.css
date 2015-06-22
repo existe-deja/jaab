@@ -15,9 +15,13 @@
 html, body{
   color: #696969;
 }
-a,p, h1, h2{
+a,p, h1, h2, h3{
   font-family: 'Open Sans', sans-serif;
   text-decoration: none;
+}
+h3{
+  font-size: 1.2em;
+  margin: .5em 0;
 }
 img{
   max-width:100%;height:auto;display:block
@@ -25,7 +29,7 @@ img{
 h1{
   font-size: 2.5em;
 }
-h2{
+h2
   font-size: 1.4em;
   font-weight: 600;
 }
@@ -155,10 +159,20 @@ input[type='submit']{
 .features li:nth-child(4) h2{
   color: #bdafd2;
 }
+.betatest,
+.press,
+.scroll-action{
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
 /* END GLOBALS */
 /***************/
 
-/********/
+
+/***************/
 /* POPIN STYLE */
 #popPlayer {
   display: none;
@@ -168,7 +182,6 @@ input[type='submit']{
   width:100%;
   height:100%;
 }
-
 .containerVideo {
   width: 100%;
   height: 100%;
@@ -176,12 +189,10 @@ input[type='submit']{
   top: 20%;
   color:#ffffff;
 }
-
 iframe.playerVimeo {
   width: 60%;
   height: 60%
 }
-
 a.closeVid {
   position: absolute;
   top: 3%;
@@ -201,7 +212,6 @@ a.closeVid {
   -webkit-border-radius: 200px;
   border-radius: 200px;
 }
-
 .ripple-wrap {
   display: none;
   overflow: hidden;
@@ -292,7 +302,41 @@ a.closeVid {
 
 }
 /* END POPIN STYLE */
+/*******************/
+
+
+/* SCROLLER MENU */
+.scroller {
+  position: fixed;
+  z-index: 3;
+  right: 50px;
+  top: 50%;
+  width: 26px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.scroller .scroll-action {
+  display: block;
+  position: relative;
+  z-index: 9999;
+  opacity: 0.5;
+  color: transparent;
+  background: #ffffff;
+  width: 6px;
+  height: 6px;
+  outline: none;
+  margin: 20px auto;
+  border-radius: 50%;
+}
+.scroller .scroll-action.active, .scroller .scroll-action:hover {
+  opacity: 1;
+  background: #ffffff;
+}
+/* FIN SCROLLER MENU */
 /********/
+
 
 /********/
 /* MENU */
@@ -331,15 +375,42 @@ a.closeVid {
   color: #fff;
   padding: 0;
 }
-.pure-menu-link[href="#beta-testeur"]{
-  background: #ffcb64;
+.menu .betatest{
   position: relative;
   padding: 14px 26px;
   border-radius: 20px; 
 }
-.pure-menu-list .press {
-  color:#ffffff;
+.menu[data-scroll="yellow"] .betatest{
+  background: #ffcb64;
+  color: #fff;
 }
+.menu[data-scroll="yellow"] .press{
+  color: #fff;
+}
+.scroller .scroll-action[data-scroll="yellow"]{
+  background: #ffcb64;
+}
+.menu[data-scroll="blue"] .betatest{
+  background: #3381f6;
+  color: #fff;
+}
+.scroller .scroll-action[data-scroll="blue"]{
+  background: #3381f6;
+}
+.menu[data-scroll="blue"] .press{
+  color: #3381f6;
+}
+.menu[data-scroll="white"] .betatest{
+  background: #fff;
+  color: #86c56c;
+}
+.scroller .scroll-action[data-scroll="white"]{
+  background: #fff;
+}
+.menu[data-scroll="white"] .press{
+  color: #86c56c;
+}
+
 /* END MENU */
 /************/
 
@@ -398,7 +469,7 @@ a.closeVid {
   position: relative;
   top: 20px;,
 }
-.plain:nth-of-type(1) .scrollAction{
+.plain:nth-of-type(1) .scroll-action{
   z-index:1;
   position: absolute;
   top: 100%;
@@ -584,6 +655,32 @@ a.closeVid {
 /* END OF SECTION 5 */
 /********************/
 
+/**************/
+/* CONDITIONS GÉNÉRALES & CONFIDENTIALITÉ */
+.plain-mentions:nth-of-type(1) .wrapper{
+  text-align: center;
+}
+.plain-mentions:nth-of-type(2) p{
+  font-size: 1em;
+  padding-bottom: 30px;
+}
+.plain-mentions:nth-of-type(2) a{
+  color:#3381f6;
+  padding-bottom: 30px;
+}
+.plain-mentions:nth-of-type(2) .kit-presse{
+  color:#ffffff;
+  background: #3381f6;
+  padding: 14px 26px;
+  font-weight:700;
+  margin-top: 30px;
+  text-transform: uppercase;
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+  border-radius: 200px;
+}
+/* CONDITIONS GÉNÉRALES & CONFIDENTIALITÉ */
+/**************/
 
 /* FOOTER */
 /**********/
