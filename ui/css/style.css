@@ -159,10 +159,20 @@ input[type='submit']{
 .features li:nth-child(4) h2{
   color: #bdafd2;
 }
+.betatest,
+.press,
+.scroll-action{
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
 /* END GLOBALS */
 /***************/
 
-/********/
+
+/***************/
 /* POPIN STYLE */
 #popPlayer {
   display: none;
@@ -292,10 +302,11 @@ a.closeVid {
 
 }
 /* END POPIN STYLE */
-/********/
+/*******************/
+
 
 /* SCROLLER MENU */
-#scrollerMenu {
+.scroller {
   position: fixed;
   z-index: 3;
   right: 50px;
@@ -306,7 +317,7 @@ a.closeVid {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-#scrollerMenu > a {
+.scroller .scroll-action {
   display: block;
   position: relative;
   z-index: 9999;
@@ -319,12 +330,13 @@ a.closeVid {
   margin: 20px auto;
   border-radius: 50%;
 }
-#scrollerMenu > a.cbp-fbcurrent, #scrollerMenu > a:hover {
+.scroller .scroll-action.active, .scroller .scroll-action:hover {
   opacity: 1;
   background: #ffffff;
 }
 /* FIN SCROLLER MENU */
 /********/
+
 
 /********/
 /* MENU */
@@ -363,16 +375,42 @@ a.closeVid {
   color: #fff;
   padding: 0;
 }
-.pure-menu-link[href="#pannel-five"], 
-.pure-menu-link[href="./home"] {
-  background: #ffcb64;
+.menu .betatest{
   position: relative;
   padding: 14px 26px;
   border-radius: 20px; 
 }
-.pure-menu-list .press {
-  color:#ffffff;
+.menu[data-scroll="yellow"] .betatest{
+  background: #ffcb64;
+  color: #fff;
 }
+.menu[data-scroll="yellow"] .press{
+  color: #fff;
+}
+.scroller .scroll-action[data-scroll="yellow"]{
+  background: #ffcb64;
+}
+.menu[data-scroll="blue"] .betatest{
+  background: #3381f6;
+  color: #fff;
+}
+.scroller .scroll-action[data-scroll="blue"]{
+  background: #3381f6;
+}
+.menu[data-scroll="blue"] .press{
+  color: #3381f6;
+}
+.menu[data-scroll="white"] .betatest{
+  background: #fff;
+  color: #86c56c;
+}
+.scroller .scroll-action[data-scroll="white"]{
+  background: #fff;
+}
+.menu[data-scroll="white"] .press{
+  color: #86c56c;
+}
+
 /* END MENU */
 /************/
 
@@ -431,7 +469,7 @@ a.closeVid {
   position: relative;
   top: 20px;,
 }
-.plain:nth-of-type(1) .scrollAction{
+.plain:nth-of-type(1) .scroll-action{
   z-index:1;
   position: absolute;
   top: 100%;

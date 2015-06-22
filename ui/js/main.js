@@ -3,22 +3,59 @@ $(document).ready(function(){
     , ripple_wrap = $('.ripple-wrap')
     , rippler = $('.ripple')
     , finish_ripple = false
+    , $scroll_action = $('.scroller .scroll-action')
+    , scroll_distances = computeScrollDistanceFixed($('.plain'), $('.scroller'))
     , scroll_pos = 0
-    , negative_one_two = 80
-    , negative_three = 80
-    , negative_four = 140
-    , margin_negative_scroll = 55
-    , positionElementInPage1 = $('#pannel-one').offset().top-negative_one_two
-    , positionElementInPage2 = $('#pannel-two').offset().top-negative_one_two
-    , positionElementInPage3 = $('#pannel-three').offset().top-negative_three
-    , positionElementInPage4 = $('#pannel-four').offset().top-negative_four
-    , $beta_testeur = $('.pure-menu-link[href=#pannel-five]')
-    , $press = $('.press')
-    , $logo = $('#jaab-logo')
-    , $menuScroll = $('#scrollerMenu > a')
-    , $selectScroll = $('.cbp-fbcurrent')
     , ANIMATION_END = 'webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend'
     ;
+
+
+  /* SIDE BULLET*/
+  function toggleScrollAction(elem){
+    $('.active').removeClass('active');
+    $(elem).addClass('active');
+  }
+
+
+  $('.scroller .scroll-action').on('click', function(e){
+    e.preventDefault();
+    toggleScrollAction(e.currentTarget);
+
+    return false;
+  });
+
+
+  function computeScrollDistanceFixed($elems, $fixed_elem){
+    scroll_to_top = [];
+
+    $elems.each(function(i, e){
+      scroll_to_top.push(
+        parseInt($(e).offset().top - $fixed_elem.position().top - $fixed_elem.height())
+      );
+    });
+
+    return scroll_to_top;
+  }
+    
+    
+  $(document).scroll(function() {
+    scroll_pos = $(this).scrollTop();
+
+    // Bullet color loop
+    found = false;
+    i = scroll_distances.length;
+    while(!found && i >=0 ){
+      if(scroll_pos > scroll_distances[i]){
+        state = $($('.plain').get(i)).attr('data-scroll');
+        $scroll_action.attr('data-scroll', state);
+        toggleScrollAction($scroll_action.get(i));
+        found = true;
+      }
+      i--;
+    }
+  });
+  /* END SIDE BULLET */
+
 
 
   /* SUBSCRIBE */
@@ -57,94 +94,6 @@ $(document).ready(function(){
   /* END SUBSCRIBE */
 
 
-  /* AUTO SCROLL */
-  $('a').on('click', function() { // Au clic sur un élément
-    var page = $(this).attr('href'); // Page cible
-     
-    $('html, body').animate({ 
-        scrollTop: $(page).offset().top+margin_negative_scroll
-      }, speed
-    );
-
-    return false;
-   });
-  /* END AUTO SCROLL */
-
-
-  /* UPDATE STYLE MENU */ 
-  $beta_testeur.css('transition', 'all 0.5s ease');
-  $press.css('transition', 'all 0.5s ease');
-  $menuScroll.css('transition', 'all 0.4s ease');
-
-  function updateStyleMenu(opt){
-    $beta_testeur.css('background-color', opt.bg_color);
-    $beta_testeur.css('color', opt.color_beta);
-    $logo.attr('src', opt.src_logo);
-    $press.css('color', opt.color_press);
-    $menuScroll.css('background', opt.bg_menuScroll);
-    $selectScroll.css('background', opt.bg_selectScroll);
-    window.location.hash = opt.new_hash;
-  }
-
-  $(document).scroll(function() { 
-    scroll_pos = $(this).scrollTop();
-    if(scroll_pos > positionElementInPage4) {
-      updateStyleMenu({
-        bg_color: '#ffffff', 
-        color_beta:'#86c56c',
-        color_press:'#ffffff',
-        src_logo: 'ui/images/logo-green.svg',
-        bg_menuScroll: '#ffffff',
-        bg_selectScroll: '#ffffff',
-        new_hash: 'decouvrez-comment-jaab-fonctionne'
-      });
-    }
-    else if(scroll_pos > positionElementInPage3) {
-      updateStyleMenu({
-        bg_color: '#3381f6', 
-        color_beta:'#ffffff',
-        color_press:'#3381f6',
-        src_logo: 'ui/images/logo-blue.svg',
-        bg_menuScroll: '#3381f6',
-        bg_selectScroll: '#3381f6',
-        new_hash: 'rejoignez-les-evenements-de-vos-amis'
-      });
-    }
-    else if(scroll_pos > positionElementInPage2) {
-      updateStyleMenu({
-        bg_color: '#86c56c', 
-        color_beta:'#ffffff',
-        color_press:'#ffffff',
-        src_logo: 'ui/images/logo-green.svg',
-        bg_menuScroll: '#ffffff',
-        bg_selectScroll: '#ffffff',
-        new_hash: 'retrouvez-tous-vos-amis-simplement'
-      });
-    }
-    else if(scroll_pos > positionElementInPage1) {
-      updateStyleMenu({
-        bg_color: '#3381f6', 
-        color_beta:'#FFFFFF',
-        color_press:'#3381f6',
-        src_logo: 'ui/images/logo-blue.svg',
-        bg_menuScroll: '#3381f6',
-        bg_selectScroll: '#3381f6',
-        new_hash: 'tous-vos-evenements-au-meme-endroit'
-      });
-    }
-    else {
-      updateStyleMenu({
-        bg_color: '#ffcb64', 
-        color_beta:'#FFFFFF',
-        color_press:'#FFFFFF',
-        src_logo: 'ui/images/logo-white.svg',
-        bg_menuScroll: '#ffffff',
-        bg_selectScroll: '#ffffff',
-        new_hash: 'intro'
-      });
-    }
-  });
-  /* END UPDATE STYLE MENU */
 
   /* POP-IN ANIMATION */
   monitor = function(el) {
