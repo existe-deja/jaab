@@ -400,15 +400,15 @@ a.closeVid {
 .menu[data-scroll="blue"] .press{
   color: #3381f6;
 }
-.menu[data-scroll="white"] .betatest{
+.menu[data-scroll="green"] .betatest{
   background: #fff;
   color: #86c56c;
 }
-.scroller .scroll-action[data-scroll="white"]{
+.scroller .scroll-action[data-scroll="green"]{
   background: #fff;
 }
-.menu[data-scroll="white"] .press{
-  color: #86c56c;
+.menu[data-scroll="green"] .press{
+  color: #fff;
 }
 
 /* END MENU */
