@@ -61,6 +61,11 @@ $(document).ready(function(){
       i--;
     }
   });
+
+
+  $(window).on('resize', function(){
+    scroll_distances_padding = computeScrollDistancePadding($('.plain'));
+  })
   /* END UPDATE STYLE MENU */
 
 });
