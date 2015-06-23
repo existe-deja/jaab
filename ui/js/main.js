@@ -54,6 +54,10 @@ $(document).ready(function(){
       i--;
     }
   });
+
+  $(window).on('resize', function(){
+    scroll_distances = computeScrollDistanceFixed($('.plain'), $('.scroller'));
+  });
   /* END SIDE BULLET */
 
 
