@@ -1,13 +1,13 @@
 $(document).ready(function(){
   var speed = 750 // Durée de l'animation scrol(en ms)
     , ripple_wrap = $('.ripple-wrap')
-    , rippler = $('.ripple')
+    , rippler = document.getElementById('ripple')
     , finish_ripple = false
     , $scroll_action = $('.scroller .scroll-action')
     , scroll_distances = computeScrollDistanceFixed($('.plain'), $('.scroller'))
     , scroll_pos = 0
-    , ANIMATION_END = 'webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend'
-    , TRANSITION_END = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd'
+    , ANIMATION_END = 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend'
+    , TRANSITION_END = 'webkitTransitionEnd mozTransitionend MSTransitionEnd oTransitionEnd transitionend '
     ;
 
 
@@ -110,12 +110,18 @@ $(document).ready(function(){
       , borderwidth = parseFloat(computed.getPropertyValue('border-left-width'))
       ;
 
-    if (!finish_ripple && borderwidth >= 1500) {
+    if (!finish_ripple && borderwidth >= 1350) {
       el.style.WebkitAnimationPlayState = 'paused';
+      el.style.MozAnimationPlayState = 'paused';
+      el.style.MsAnimationPlayState = 'paused';
+      el.style.OAnimationPlayState = 'paused';
       el.style.animationPlayState = 'paused';
     }
     if (finish_ripple) {
       el.style.WebkitAnimationPlayState = 'running';
+      el.style.MozAnimationPlayState = 'running';
+      el.style.MsAnimationPlayState = 'running';
+      el.style.OAnimationPlayState = 'running';
       el.style.animationPlayState = 'running';
       return;
     } else {
@@ -125,20 +131,20 @@ $(document).ready(function(){
     }
   };
 
-  rippler.bind(ANIMATION_END, function(e){
+  $(rippler).bind(ANIMATION_END, function(e){
     ripple_wrap.removeClass('goripple');
   });
 
-  $('body').on('click', '.openVid', function(e) {
+  $('body').on('click', '.open-vid', function(e) {
     e.preventDefault();
     ripple_wrap.addClass('goripple');
-    rippler.css('left', e.clientX + 'px');
-    rippler.css('top', e.clientY + 'px');
+    $(rippler).css('left', e.clientX + 'px');
+    $(rippler).css('top', e.clientY + 'px');
     finish_ripple = false;
     $('#popPlayer').delay('slow').fadeIn('slow');
 
     window.requestAnimationFrame(function() {
-      monitor(rippler[0]);
+      monitor(rippler);
     });
   });
 
