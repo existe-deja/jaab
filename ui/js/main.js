@@ -96,39 +96,13 @@ $(document).ready(function(){
 
     return false;
   });
-  /* END SUBSCRIBE */
 
-  // $('.subscribe-form').bind(TRANSITION_END, function(e){
-  //   console.log('bind transition');
-  //   // console.log(e);
-  // });
-  
-  // $('.subscribe-form').on(TRANSITION_END, function(e){
-  //   console.log('on transition');
-  //   // console.log(e);
-  // });
-  
-  
+
+  // Glow effect
   $('.subscribe-form').one(TRANSITION_END, function(e){
-    console.log('one transition');
     $(e.currentTarget).find('.email-wrapper').addClass('entered');
   });
 
-  // $('.subscribe-form').bind(ANIMATION_END, function(e){
-  //   console.log('bind animation');
-  //   // console.log(e);
-  // });
-  
-  // $('.subscribe-form').on(ANIMATION_END, function(e){
-  //   console.log('on animation');
-  //   // console.log(e);
-  // });
-  
-  
-  // $('.subscribe-form').one(ANIMATION_END, function(e){
-  //   console.log('one animation');
-  //   // console.log(e);
-  // });
 
   /* POP-IN ANIMATION */
   monitor = function(el) {
