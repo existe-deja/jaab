@@ -7,6 +7,7 @@ $(document).ready(function(){
     , scroll_distances = computeScrollDistanceFixed($('.plain'), $('.scroller'))
     , scroll_pos = 0
     , ANIMATION_END = 'webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend'
+    , TRANSITION_END = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd'
     ;
 
 
@@ -95,8 +96,12 @@ $(document).ready(function(){
 
     return false;
   });
-  /* END SUBSCRIBE */
 
+
+  // Glow effect
+  $('.subscribe-form').one(TRANSITION_END, function(e){
+    $(e.currentTarget).find('.email-wrapper').addClass('entered');
+  });
 
 
   /* POP-IN ANIMATION */
@@ -123,7 +128,6 @@ $(document).ready(function(){
   rippler.bind(ANIMATION_END, function(e){
     ripple_wrap.removeClass('goripple');
   });
-
 
   $('body').on('click', '.openVid', function(e) {
     e.preventDefault();

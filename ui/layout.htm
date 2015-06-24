@@ -45,11 +45,10 @@
       ga('send', 'pageview');
     </script>
     <script type="text/javascript" src="ui/js/vendors/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="ui/js/vendors/scrollReveal.min.js"></script>
     <script type="text/javascript" src="ui/js/basic.js"></script>
-
     <?php if(Base::instance()->get('script') != null):?>
     <script type="text/javascript" src=<?php echo('"ui/js/'.Base::instance()->get('script').'" '); ?>></script>
     <?php endif ?>
+    <script type="text/javascript" src="ui/js/vendors/scrollReveal.min.js"></script>
   </body>
 </html>

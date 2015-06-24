@@ -1,6 +1,5 @@
-window.sr = new scrollReveal();
-
 $(document).ready(function(){
+  window.sr = new scrollReveal();
   var speed = 750
     , $menu = $($('.menu')[0])
     , $logo = $('#jaab-logo')
@@ -65,7 +64,7 @@ $(document).ready(function(){
 
   $(window).on('resize', function(){
     scroll_distances_padding = computeScrollDistancePadding($('.plain'));
-  })
+  });
   /* END UPDATE STYLE MENU */
 
 });
