@@ -10,8 +10,8 @@ class MainController{
   function home(){
     session_start();
     // 403 on mobile...
-    // $s = new Session();
-    // F3::set('SESSION.csrf', $s->csrf());
+    $s = new Session();
+    F3::set('SESSION.csrf', $s->csrf());
     F3::set('content', 'home.htm');
     F3::set('script', 'main.js');
 
