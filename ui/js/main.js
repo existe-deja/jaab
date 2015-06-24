@@ -7,6 +7,7 @@ $(document).ready(function(){
     , scroll_distances = computeScrollDistanceFixed($('.plain'), $('.scroller'))
     , scroll_pos = 0
     , ANIMATION_END = 'webkitAnimationEnd oAnimationEnd msAnimationEnd mozAnimationEnd animationend'
+    , TRANSITION_END = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd'
     ;
 
 
@@ -97,7 +98,37 @@ $(document).ready(function(){
   });
   /* END SUBSCRIBE */
 
+  // $('.subscribe-form').bind(TRANSITION_END, function(e){
+  //   console.log('bind transition');
+  //   // console.log(e);
+  // });
+  
+  // $('.subscribe-form').on(TRANSITION_END, function(e){
+  //   console.log('on transition');
+  //   // console.log(e);
+  // });
+  
+  
+  $('.subscribe-form').one(TRANSITION_END, function(e){
+    console.log('one transition');
+    $(e.currentTarget).find('.email-wrapper').addClass('entered');
+  });
 
+  // $('.subscribe-form').bind(ANIMATION_END, function(e){
+  //   console.log('bind animation');
+  //   // console.log(e);
+  // });
+  
+  // $('.subscribe-form').on(ANIMATION_END, function(e){
+  //   console.log('on animation');
+  //   // console.log(e);
+  // });
+  
+  
+  // $('.subscribe-form').one(ANIMATION_END, function(e){
+  //   console.log('one animation');
+  //   // console.log(e);
+  // });
 
   /* POP-IN ANIMATION */
   monitor = function(el) {
@@ -123,7 +154,6 @@ $(document).ready(function(){
   rippler.bind(ANIMATION_END, function(e){
     ripple_wrap.removeClass('goripple');
   });
-
 
   $('body').on('click', '.openVid', function(e) {
     e.preventDefault();
