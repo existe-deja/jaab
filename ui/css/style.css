@@ -226,12 +226,11 @@ a.closeVid {
   border-radius: 200px;
 }
 .ripple-wrap {
-  display: none;
   overflow: hidden;
   position: fixed;
   font-size: 0;
-  z-index: 3;
   top: 0; left: 0; right: 0; bottom: 0;
+  display: block;
 }
 #ripple {
   display: block;
@@ -244,102 +243,27 @@ a.closeVid {
   position: absolute;
   top: 300px;
   left: 300px;
-  -webkit-animation: none;
-  -moz-animation: none;
-  -ms-animation: none;
-  -o-animation: none;
-  animation: none;
+  margin-top: 0;
+  margin-left: 0;
+  -webkit-transition: border 0.7s ease-out,
+    margin 0.7s ease-out;
+  -moz-transition: border 0.7s ease-out,
+    margin 0.7s ease-out;
+  -ms-transition: border 0.7s ease-out,
+    margin 0.7s ease-out;
+  -o-transition: border 0.7s ease-out,
+    margin 0.7s ease-out;
+  transition: border 0.7s ease-out,
+    margin 0.7s ease-out;
 }
 .ripple-wrap.goripple {
-  display: block;
+  z-index: 3;
 }
-.ripple-wrap.goripple #ripple {
-  -webkit-animation: RIPPLER 1.5s linear forwards;
-  -moz-animation: RIPPLER 1.5s linear forwards;
-  animation: RIPPLER 1.5s linear forwards;
-}
-@-webkit-keyframes RIPPLER {
-  0%   { border-width: 0; }
-  40% { 
-    height: 0;
-    width: 0;
-    border-width: 1500px;
-    margin-top: -1500px;
-    margin-left:-1500px; 
-    border-color: #3381f6;
-  }
-  
-  41% { 
-    height: 0;
-    width: 0;
-    border-width: 1500px;
-    margin-top: -1500px;
-    margin-left:-1500px; 
-    border-color: #3381f6;
-  }
-  100% {
-    border-width: 1500px;
-    height: 2000px;
-    width: 2000px;
-    margin-top: -2500px;
-    margin-left:-2500px;
-    border-color: #fff;
-  }
-}
-@-moz-keyframes RIPPLER {
-  0%   { border-width: 0; }
-  40% { 
-    height: 0;
-    width: 0;
-    border-width: 1500px;
-    margin-top: -1500px;
-    margin-left:-1500px; 
-    border-color: #3381f6;
-  }
-  
-  41% { 
-    height: 0;
-    width: 0;
-    border-width: 1500px;
-    margin-top: -1500px;
-    margin-left:-1500px; 
-    border-color: #3381f6;
-  }
-  100% {
-    border-width: 1500px;
-    height: 2000px;
-    width: 2000px;
-    margin-top: -2500px;
-    margin-left:-2500px;
-    border-color: #fff;
-  }
-}
-@keyframes RIPPLER {
-  0%   { border-width: 0; }
-  40% { 
-    height: 0;
-    width: 0;
-    border-width: 1500px;
-    margin-top: -1500px;
-    margin-left:-1500px; 
-    border-color: #3381f6;
-  }
-  41% { 
-    height: 0;
-    width: 0;
-    border-width: 1500px;
-    margin-top: -1500px;
-    margin-left:-1500px; 
-    border-color: #3381f6;
-  }
-  100% {
-    border-width: 1500px;
-    height: 2000px;
-    width: 2000px;
-    margin-top: -2500px;
-    margin-left:-2500px;
-    border-color: #fff;
-  }
+#ripple.born{
+  border-width: 1500px;
+  margin-top: -1500px;
+  margin-left:-1500px; 
+  /*border-color: #86c56c;*/
 }
 /* END POPIN STYLE */
 /*******************/
