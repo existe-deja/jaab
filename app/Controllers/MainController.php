@@ -26,7 +26,7 @@ class MainController{
 
     $csrf_client = F3::get('SESSION.csrf');
 
-    if( $csrf_client == F3::get('POST.token') && isset($csrf_client   ) == true){
+    if( $csrf_client == F3::get('POST.token') && isset($csrf_client) == true){
       $email_form = F3::get('POST.subscriber');
       $audit = \Audit::instance();
       
