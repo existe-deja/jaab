@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var speed = 750 // Durée de l'animation scrol(en ms)
     , ripple_wrap = $('.ripple-wrap')
-    , rippler = document.getElementById('ripple')
+    , $rippler = $('#ripple')
     , finish_ripple = false
     , $scroll_action = $('.scroller .scroll-action')
     , scroll_distances = computeScrollDistanceFixed($('.plain'), $('.scroller'))
@@ -105,53 +105,26 @@ $(document).ready(function(){
 
 
   /* POP-IN ANIMATION */
-  monitor = function(el) {
-    var computed = window.getComputedStyle(el, null)
-      , borderwidth = parseFloat(computed.getPropertyValue('border-left-width'))
-      ;
-
-    if (!finish_ripple && borderwidth >= 1350) {
-      el.style.WebkitAnimationPlayState = 'paused';
-      el.style.MozAnimationPlayState = 'paused';
-      el.style.MsAnimationPlayState = 'paused';
-      el.style.OAnimationPlayState = 'paused';
-      el.style.animationPlayState = 'paused';
-    }
-    if (finish_ripple) {
-      el.style.WebkitAnimationPlayState = 'running';
-      el.style.MozAnimationPlayState = 'running';
-      el.style.MsAnimationPlayState = 'running';
-      el.style.OAnimationPlayState = 'running';
-      el.style.animationPlayState = 'running';
-      return;
-    } else {
-      window.requestAnimationFrame(function() {
-        monitor(el);
-      });
-    }
-  };
-
-  $(rippler).bind(ANIMATION_END, function(e){
-    ripple_wrap.removeClass('goripple');
-  });
-
   $('body').on('click', '.open-vid', function(e) {
     e.preventDefault();
     ripple_wrap.addClass('goripple');
-    $(rippler).css('left', e.clientX + 'px');
-    $(rippler).css('top', e.clientY + 'px');
-    finish_ripple = false;
+    $rippler.addClass('born');
+    $rippler.css('left', e.clientX + 'px');
+    $rippler.css('top', e.clientY + 'px');
+    $rippler.css('border-color', $(e.currentTarget).attr('data-ripple'));
     $('#popPlayer').delay('slow').fadeIn('slow');
-
-    window.requestAnimationFrame(function() {
-      monitor(rippler);
-    });
   });
 
   $('body').on('click', '.closeVid', function(e) {
-    $('#popPlayer').delay('fast').fadeOut('fast');
     e.preventDefault();
-    finish_ripple = true;
+    $rippler.removeClass('born');
+    $rippler.css('border-color', '#fff');
+    $rippler.one(TRANSITION_END, function(){
+      ripple_wrap.removeClass('goripple');
+    })
+
+    $('#popPlayer').delay('fast').fadeOut('fast', function(){
+    });
   });
   /* END POP-IN ANIMATION */
 
