@@ -210,12 +210,12 @@ a.closeVid {
   position: absolute;
   top: 3%;
   right: 5%;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: block;
   margin: 0 auto;
-  background: #fff url(../images/sprite-icons.png) no-repeat;
-  background-position: -145px -155px;
+  background: url(../images/sprite-icons.png) no-repeat;
+  background-position: -150px -150px;
   -moz-box-shadow: 0px 0px 5px 0px #656565;
   -webkit-box-shadow: 0px 0px 5px 0px #656565;
   -o-box-shadow: 0px 0px 5px 0px #656565;
