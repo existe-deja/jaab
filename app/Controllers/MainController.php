@@ -9,7 +9,6 @@ class MainController{
 
   function home(){
     session_start();
-    // 403 on mobile...
     $s = new Session();
     F3::set('SESSION.csrf', $s->csrf());
     F3::set('content', 'home.htm');
@@ -25,7 +24,9 @@ class MainController{
       'msg' => ''
     );
 
-    if(F3::get('SESSION.csrf') == F3::get('POST.token')){
+    $csrf_client = F3::get('SESSION.csrf');
+
+    if( $csrf_client == F3::get('POST.token') && isset($csrf_client   ) == true){
       $email_form = F3::get('POST.subscriber');
       $audit = \Audit::instance();
       
@@ -64,7 +65,7 @@ class MainController{
       }
     }else{
       $status['status'] = false;
-      $status['msg'] = "Greetings from KGB ;)";
+      $status['msg'] = "classic shit ;)";
     }
 
     echo json_encode($status);
